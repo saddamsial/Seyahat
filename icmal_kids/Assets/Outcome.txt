@@ -1,0 +1,1 @@
+Instantiate fonksiyonu içerisine iki parametre girildi. Bunlardan birincisi oluşturacağımız nesne, ikincisi onun ebeveyn nesnesi idi. Oluşturulma konumu için ebeveyn nesne dikkate alındı.
