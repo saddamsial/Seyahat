@@ -17,15 +17,13 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
         capsuleCollider2d = GetComponent<CapsuleCollider2D>();
-
         inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
-
-        ItemWorld.SpawnItemWorld(new Vector3(20, 20), new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
-        ItemWorld.SpawnItemWorld(new Vector3(-20, 20), new Item { itemType = Item.ItemType.ManaPotion, amount = 1 });
-        ItemWorld.SpawnItemWorld(new Vector3(0, -20), new Item { itemType = Item.ItemType.Sword, amount = 1 });
-
     }
+
+    private void Start() {
+        uiInventory.SetInventory(inventory);
+    }
+
     private void Update() {
         MovementControl();
         JumpControl();
@@ -48,6 +46,14 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D raycastHit2d = Physics2D.BoxCast(capsuleCollider2d.bounds.center, capsuleCollider2d.bounds.size, 0f, Vector2.down, 0.1f, platformsLayerMask);
         // Debug.Log(raycastHit2d.collider);
         return raycastHit2d.collider != null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
+        if (itemWorld != null) {
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
     }
 
 }

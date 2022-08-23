@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Item {
 
-     public enum ItemType {
+    public enum ItemType {
         Sword,
         HealthPotion,
         ManaPotion,
@@ -26,4 +28,30 @@ public class Item {
 
         }
 
-    }}
+    }
+
+    public Color GetColor() {
+        switch (itemType) {
+            default:
+            case ItemType.Sword:        return new Color(1, 1, 1);
+            case ItemType.HealthPotion: return new Color(1, 0, 0);
+            case ItemType.ManaPotion:   return new Color(0, 0, 1);
+            case ItemType.Coin:         return new Color(1, 1, 0);
+            case ItemType.Medkit:       return new Color(0, 1, 0);
+
+        }
+    }
+
+    public bool IsStackable() {
+        switch (itemType) {
+            default:
+            case ItemType.Coin:
+            case ItemType.HealthPotion:
+            case ItemType.ManaPotion:
+                return true;
+            case ItemType.Sword:
+            case ItemType.Medkit:
+                return false;
+        }
+    }
+}
