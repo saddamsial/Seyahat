@@ -43,7 +43,7 @@ public class Item {
     }
 
     public bool IsStackable() {
-        switch (itemType) {
+        switch (itemType)  {
             default:
             case ItemType.Coin:
             case ItemType.HealthPotion:

@@ -28,6 +28,7 @@ public class Inventory {
                     itemAlreadyInInventory = true;
                 }
             }
+
             if (!itemAlreadyInInventory) {
                 itemList.Add(item);
             }
