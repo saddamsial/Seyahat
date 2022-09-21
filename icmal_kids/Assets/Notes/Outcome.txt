@@ -1,0 +1,54 @@
+Instantiate fonksiyonu içerisine iki parametre girildi. Bunlardan birincisi oluşturacağımız nesne, ikincisi onun ebeveyn nesnesi idi. Oluşturulma konumu için ebeveyn nesne dikkate alındı.
+
+Light 2D içerisinde volumetric seçeneğini kullandım.
+
+Awake should be used to set up references between classes, not passing information back and forth.
+Start can be used for a variety of different purposes with the exception of initializing dependent variables.
+
+SOLVED: Instead of static reference I'll be using non static reference of ItemAssets class.
+
+Check your objects if you've changed your scripts. Do they have the missing  mono(?) script files or not?
+
+In a Serializeable normal class if I make a SerializeField object, I still can reach it in editor by a class that has public/[SerializeField] normal class in it.
+
+If a method is static, you can't call non-static variables in it.(?)
+
+Search option is case sensitive.
+
+Whenever I want to add combinable object into scene, I need to check combinable checkbox of its Serializable Item class.
+
+//Bone based 2D characters are a powerful alternative to sprite sequences.
+A single sprite or a small set of sprites can be assembled to make a character.
+
+File > Save As > Save as: something.psb > Save so that it can be imported into Unity.
+
+All the 2D renderers in Unity respond to 2D lights. That includes, sprite renderers, tilemap renderers as well as sprite shape renderers.
+
+OnItemListChanged?.Invoke(this, EventArgs.Empty); means nullcheck.
+
+A good rule is to name the property the same thing as the field except starting with the capital letter.
+With properties you can make the field write only or read only.
+Excessors can also be treated just like functions.
+You could run other lines of code or put calls to other funtions inside them.
+The field encapsulation need not be direct.  
+prop snippet 
+
+
+You can use rmb/(lmb to 3 dots) and then select option paste component as new. This pastes any component you've copied regardless of its type.
+
+
+I could create another child gameobject and add collider inside of it. This way I could edit it easier. But I thought it could cost me losing performance in long run.
+
+When you say transform.Find, it's only searching for children of your transform.
+GameObject.Find is searching the entire scene.
+
+You need to find children in order. You can't pass any any find next one using transform.Find()
+
+There was an issue because itemSlotTemplate's children had offset values.
+
+When I checked enter play mode settings I had an issue while playing game.
+-> Domain reload is required. But why?
+
+Applying root motion solved my issue in animation.
+
+

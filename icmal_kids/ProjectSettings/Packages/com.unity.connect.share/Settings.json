@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/UmutKaan/Game Development/With Unity/icmal_kids/icmal_kids/Build for WebGL/Added new border;C:/Users/UmutKaan/Game Development/With Unity/icmal_kids/icmal_kids/WebGL Builds/Las;C:/Users/UmutKaan/Game Development/With Unity/icmal_kids/icmal_kids/WebGL Builds;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/UmutKaan/Game Development/With Unity/Projects/icmal_kids/icmal_kids/WebGL Builds/Added combinability logic;C:/Users/UmutKaan/Game Development/With Unity/icmal_kids/icmal_kids/Build for WebGL/Added new border;C:/Users/UmutKaan/Game Development/With Unity/icmal_kids/icmal_kids/WebGL Builds/Las;C:/Users/UmutKaan/Game Development/With Unity/icmal_kids/icmal_kids/WebGL Builds;;;;;;\"}"
             }
         ]
     }

@@ -1,7 +1,0 @@
-Study camera control again.
-Take the code/assets from CM's project and apply it directly. (Let's try that way.)
-
-Do FuncPeriodic and FunctionTimer classes belong to CodeMonkey?
-
-Configure how 2D light works.
-

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7181f404f1447c0a7a17b3070b952b, type: 3}
+  m_Name: Demo Profile Close Shape
+  m_EditorClassIdentifier: 
+  m_Angles:
+  - m_Start: -45
+    m_End: 45
+    m_Order: 0
+    m_Sprites:
+    - {fileID: -2077693320, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_Start: 45
+    m_End: 135
+    m_Order: 0
+    m_Sprites:
+    - {fileID: -1874560241, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_Start: -224
+    m_End: -134
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 1627308993, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_Start: -134
+    m_End: -45
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 2048346071, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  m_FillTexture: {fileID: 2800000, guid: 369cbd4f3ab993f49a01f9dcc591b96f, type: 3}
+  m_CornerSprites:
+  - m_CornerType: 0
+    m_Sprites:
+    - {fileID: -400047737, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_CornerType: 1
+    m_Sprites:
+    - {fileID: 308955721, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_CornerType: 2
+    m_Sprites:
+    - {fileID: -329142043, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_CornerType: 3
+    m_Sprites:
+    - {fileID: 1941904530, guid: 52fba6b3be6c1cf4eabb5ec3bd9614e5, type: 3}
+  - m_CornerType: 4
+    m_Sprites:
+    - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - m_CornerType: 5
+    m_Sprites:
+    - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - m_CornerType: 6
+    m_Sprites:
+    - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  - m_CornerType: 7
+    m_Sprites:
+    - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
+  m_FillOffset: 0
+  m_UseSpriteBorders: 1
