@@ -51,4 +51,8 @@ When I checked enter play mode settings I had an issue while playing game.
 
 Applying root motion solved my issue in animation.
 
+When I've changed the scripts' location they've became missing. I needed to reattach them and delete old ones.
+
+CM's script execution order was essential. I solved my last nullreferenceexception using his approach.
+
 

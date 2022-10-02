@@ -508,6 +508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7539623819053386438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd414ea58837d14e9679792672f48bb, type: 3}
+  m_Script: {fileID: 11500000, guid: e57b24c31081dc14c9368cfe20d976cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}

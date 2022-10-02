@@ -92,9 +92,9 @@ public class PlayerController : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-
     private void MovementControl() {
         xInput = Input.GetAxis("Horizontal");
+
         transform.Translate(movementVector * xInput * Time.deltaTime);
     }
 
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (!collision.CompareTag("PuzzleButtonTrigger")) {
+        if (collision.name.Contains("pfItem")) {
             SoundManager.instance.audioSource.PlayOneShot(itemPickUpSound);
         }
 
@@ -143,7 +143,6 @@ public class PlayerController : MonoBehaviour {
         if (itemWorld != null) {
 
             inventory.AddItem(itemWorld.GetItem());
-
             itemWorld.DestroySelf();
         }
     }

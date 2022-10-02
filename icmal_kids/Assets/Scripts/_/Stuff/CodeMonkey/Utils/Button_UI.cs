@@ -9,7 +9,7 @@
                unitycodemonkey.com
     --------------------------------------------------
  */
- 
+
 //#define SOUND_MANAGER // Has Sound_Manager in project
 //#define CURSOR_MANAGER // Has Cursor_Manager in project
 
@@ -19,7 +19,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace CodeMonkey.Utils {
-    
+
     /*
      * Button in the UI
      * */
@@ -38,6 +38,11 @@ namespace CodeMonkey.Utils {
         public Action MouseOverPerSecFunc = null; //Triggers every sec if mouseOver
         public Action MouseUpdate = null;
         public Action<PointerEventData> OnPointerClickFunc;
+
+        // Umut Kaan Özdemir's
+        public Action StationaryTouchPhase = null;
+
+        
 
         public enum HoverBehaviour {
             Custom,
@@ -66,6 +71,20 @@ namespace CodeMonkey.Utils {
 #if CURSOR_MANAGER
         public CursorManager.CursorType cursorMouseOver, cursorMouseOut;
 #endif
+
+        public void TouchPhases() {
+            if (Input.touchCount > 0) {
+                Touch touch = Input.GetTouch(0);
+
+                switch (touch.phase) {
+                    case TouchPhase.Stationary:
+                        if (StationaryTouchPhase != null) {
+                            StationaryTouchPhase();
+                        }
+                        break;
+                }
+            }
+        }
 
 
         public virtual void OnPointerEnter(PointerEventData eventData) {
@@ -123,6 +142,9 @@ namespace CodeMonkey.Utils {
             }
             if (MouseUpdate != null) MouseUpdate();
 
+            // UKÖ
+            TouchPhases();
+
         }
         void Awake() {
             posExit = transform.localPosition;
@@ -144,18 +166,18 @@ namespace CodeMonkey.Utils {
         public void SetHoverBehaviourType(HoverBehaviour hoverBehaviourType) {
             this.hoverBehaviourType = hoverBehaviourType;
             switch (hoverBehaviourType) {
-            case HoverBehaviour.Change_Color:
-                hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.color = hoverBehaviour_Color_Enter; };
-                hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.color = hoverBehaviour_Color_Exit; };
-                break;
-            case HoverBehaviour.Change_Image:
-                hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.sprite = hoverBehaviour_Sprite_Enter; };
-                hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.sprite = hoverBehaviour_Sprite_Exit; };
-                break;
-            case HoverBehaviour.Change_SetActive:
-                hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.gameObject.SetActive(true); };
-                hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.gameObject.SetActive(false); };
-                break;
+                case HoverBehaviour.Change_Color:
+                    hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.color = hoverBehaviour_Color_Enter; };
+                    hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.color = hoverBehaviour_Color_Exit; };
+                    break;
+                case HoverBehaviour.Change_Image:
+                    hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.sprite = hoverBehaviour_Sprite_Enter; };
+                    hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.sprite = hoverBehaviour_Sprite_Exit; };
+                    break;
+                case HoverBehaviour.Change_SetActive:
+                    hoverBehaviourFunc_Enter = delegate () { hoverBehaviour_Image.gameObject.SetActive(true); };
+                    hoverBehaviourFunc_Exit = delegate () { hoverBehaviour_Image.gameObject.SetActive(false); };
+                    break;
             }
         }
 

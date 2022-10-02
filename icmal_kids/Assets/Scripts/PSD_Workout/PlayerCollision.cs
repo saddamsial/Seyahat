@@ -25,12 +25,12 @@ public class PlayerCollision : MonoBehaviour {
         onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
     }
 
-    private void OnDrawGizmos() {
-        Gizmos.color = gizmoColor;
-        Gizmos.DrawWireSphere((Vector2)transform.position + groundOffset, collisionRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, collisionRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
+    //private void OnDrawGizmos() {
+    //    Gizmos.color = gizmoColor;
+    //    Gizmos.DrawWireSphere((Vector2)transform.position + groundOffset, collisionRadius);
+    //    Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, collisionRadius);
+    //    Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
 
-    }
+    //}
 
 }

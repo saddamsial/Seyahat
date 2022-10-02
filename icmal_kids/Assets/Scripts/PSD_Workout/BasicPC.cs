@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BasicPC : MonoBehaviour {
 
@@ -26,13 +27,14 @@ public class BasicPC : MonoBehaviour {
     public AudioClip climbingSound;
     public AudioClip slidingFromWallSound;
     public AudioClip itemPickUpSound;
-
+    private int jumpCount = 0;
     private bool isStartedPlaying = false;
+    [SerializeField] TextMeshProUGUI textJumpCount;
 
-    // Vector2 verticalStop;
+    //[SerializeField] Transform parentTransform;
 
-    // Start is called before the first frame update
     void Start() {
+        //parentTransform.position = transform.position;
         audioSource = GetComponent<AudioSource>();
         playerCollision = GetComponent<PlayerCollision>();
         rb = GetComponent<Rigidbody2D>();
@@ -47,14 +49,20 @@ public class BasicPC : MonoBehaviour {
             //Hurt();
             //Die();
             Attack();
-            Jump();
+            //Jump();
             Walk();
-
+            
+            ShowJumpCount();
         }
     }
 
+    private void ShowJumpCount() {
+        textJumpCount.text = $"Jump Count: " + jumpCount;
+    }
+
     private void WallGrab() {
-        float verticalMovement = Input.GetAxis("Vertical");
+        float verticalMovement;
+        verticalMovement = joystick.Vertical;
 
         if (playerCollision.onWall && anim.GetBool("isJumping")) {
             wallGrab = true;
@@ -123,10 +131,16 @@ public class BasicPC : MonoBehaviour {
                 anim.SetBool("isJumping", false);
                 anim.SetBool("isLanded", true);
                 SoundManager.instance.audioSource.PlayOneShot(landingSound);
+
+                if (jumpCount == 1) {
+                    jumpCount--;
+                }
+            
             }
         }
     }
 
+    public Joystick joystick;
     void Walk() {
         if (!canMove) {
             return;
@@ -139,7 +153,10 @@ public class BasicPC : MonoBehaviour {
         anim.SetBool("isRunning", false);
 
 
-        if (Input.GetAxisRaw("Horizontal") < 0) {
+        //if (Input.GetAxisRaw("Horizontal") < 0) {
+        if (joystick.Horizontal < 0) {
+
+
             direction = -0.8f;
             moveVelocity = Vector3.left;
 
@@ -150,7 +167,10 @@ public class BasicPC : MonoBehaviour {
                 anim.SetBool("isRunning", true);
 
         }
-        if (Input.GetAxisRaw("Horizontal") > 0) {
+        //if (Input.GetAxisRaw("Horizontal") > 0) {
+        if (joystick.Horizontal > 0) {
+
+
             direction = .8f;
             moveVelocity = Vector3.right;
 
@@ -162,6 +182,7 @@ public class BasicPC : MonoBehaviour {
         }
 
         transform.position += moveVelocity * movePower * Time.deltaTime;
+
 
         if (playerCollision.onGround && anim.GetBool("isRunning")) {
             if (!audioSource.isPlaying) {
@@ -183,36 +204,44 @@ public class BasicPC : MonoBehaviour {
         //    Debug.Log("Stoped!");
         //}
 
-    }
-    void Jump() {
         if (playerCollision.onGround) {
             wallJumping = false;
 
         }
 
-        if ((Input.GetButtonDown("Jump"))) {
-            isJumping = true;
-            anim.SetBool("isJumping", true);
-            if (!playerCollision.onGround && playerCollision.onWall) {
-                anim.SetBool("isJumping", true);
-                return;
-            }
-        }
         if (!isJumping) {
             return;
         }
 
-        if (wallGrab && !wallJumping) {
-            WallJump();
-        } else {
+    }
+    public void Jump() {
+        if (jumpCount == 0) {
 
-            rb.velocity = Vector2.zero;
+            // TODO add -- version and configure this method.
+            jumpCount++;
+            //if ((Input.GetButtonDown("Jump"))) {
+            //}
 
-            Vector2 jumpVelocity = new Vector2(0, jumpPower);
-            rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
-            isJumping = false;
-            SoundManager.instance.audioSource.PlayOneShot(jumpingSound);
+            isJumping = true;
+            anim.SetBool("isJumping", true);
+            if (!playerCollision.onGround && playerCollision.onWall) {
+                anim.SetBool("isJumping", true);
+                jumpCount--;
+                return;
+            }
 
+            if (wallGrab && !wallJumping) {
+                WallJump();
+            } else {
+
+                rb.velocity = Vector2.zero;
+
+                Vector2 jumpVelocity = new Vector2(0, jumpPower);
+                rb.AddForce(jumpVelocity, ForceMode2D.Impulse);
+                isJumping = false;
+                SoundManager.instance.audioSource.PlayOneShot(jumpingSound);
+
+            }
         }
     }
     void WallJump() {

@@ -7,7 +7,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.DA949528" = "profiler"
+	"last_search.DA949528" = "development"
 	"OpenInspectorPreview.DA949528" = "0"
 	"currentGroup.DA949528" = "all"
 }
@@ -81,8 +81,9 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
-	"pro"
+	"de"
 	"s"
+	"pro"
 	"P"
 	"asd"
 ]

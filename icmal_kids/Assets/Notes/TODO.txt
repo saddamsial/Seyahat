@@ -53,3 +53,7 @@ Change inventory sprites of new objects.
 Learn the cost of making a variable global and using new keyword in an update method.
 
 PlayOneShot method for landingSoundEffect didn't worked in audiosource component of player. Figure out why.
+
+Learn PointerDownEvent.
+
+
