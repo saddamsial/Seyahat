@@ -34,7 +34,7 @@ public class ButtonClickAndStayController : MonoBehaviour, IPointerDownHandler, 
         if (isPointerDown) {
             pointerDownTimer += Time.deltaTime;
             if (pointerDownTimer >= requiredHoldTime) {
-
+                
                 OnLongClick?.Invoke();
                 Reset();                
             }
@@ -43,8 +43,12 @@ public class ButtonClickAndStayController : MonoBehaviour, IPointerDownHandler, 
     }
 
     private void Reset() {
+        
         isPointerDown = false;
         pointerDownTimer = 0;
         // fillImage.fillAmount = pointerDownTimer / requiredHoldTime;
     }
+    
+    
+    
 }

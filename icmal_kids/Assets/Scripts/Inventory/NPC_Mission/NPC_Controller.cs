@@ -45,7 +45,8 @@ public class NPC_Controller : MonoBehaviour {
     }
 
     private void SideDetection() {
-        horizontalInput = joystick.Horizontal;
+        //horizontalInput = joystick.Horizontal;
+        horizontalInput = Input.GetAxisRaw("Horizontal");
         if (horizontalInput < 0) {
             playerIsMovingRightSide = false;
         } else if (horizontalInput > 0) {
@@ -104,7 +105,7 @@ public class NPC_Controller : MonoBehaviour {
         xOffset = player.GetComponent<PlayerController>().BirdsAttached switch {
             0 => 5,
             1 => 8,
-            2 => 1,
+            2 => 2,
             _ => 0
         };
     }

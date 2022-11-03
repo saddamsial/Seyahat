@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Inventory {
 
     public event EventHandler OnItemListChanged;
@@ -18,6 +19,8 @@ public class Inventory {
         AddItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1, combinable = false });
         AddItem(new Item { itemType = Item.ItemType.ManaPotion, amount = 1, combinable = false });
         AddItem(new Item { itemType = Item.ItemType.String, amount = 3, combinable = true, maxStack = 4 });
+
+        //**************************
 
     }
 

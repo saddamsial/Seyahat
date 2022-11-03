@@ -1,6 +1,6 @@
 Instantiate fonksiyonu içerisine iki parametre girildi. Bunlardan birincisi oluşturacağımız nesne, ikincisi onun ebeveyn nesnesi idi. Oluşturulma konumu için ebeveyn nesne dikkate alındı.
 
-Light 2D içerisinde volumetric seçeneğini kullandım.
+Light 2D içerisinde volumetric seçenegini kullandım.
 
 Awake should be used to set up references between classes, not passing information back and forth.
 Start can be used for a variety of different purposes with the exception of initializing dependent variables.
@@ -56,3 +56,6 @@ When I've changed the scripts' location they've became missing. I needed to reat
 CM's script execution order was essential. I solved my last nullreferenceexception using his approach.
 
 
+I've lastly changed 3 puzzle canvases canvas scaler to scale with screen size and button size issue is solved.
+
+Canvas Scaler Screen Match Mode = Match Width for Portrait, Match Height for Landscape.

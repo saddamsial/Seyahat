@@ -56,4 +56,7 @@ PlayOneShot method for landingSoundEffect didn't worked in audiosource component
 
 Learn PointerDownEvent.
 
+Change how puzzle panel is displayed: Configure it as text will always be shown even if the keyboard is opened.
+
+Publish/share both .apk and .abb files today(07.10.2022)
 

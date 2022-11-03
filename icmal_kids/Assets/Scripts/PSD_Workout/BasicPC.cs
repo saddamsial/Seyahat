@@ -16,7 +16,7 @@ public class BasicPC : MonoBehaviour {
     private bool alive = true;
     [SerializeField] bool wallGrab;
     PlayerCollision playerCollision;
-    [SerializeField] float speedModifier = 0;
+    [SerializeField] float speedModifier;
     private AudioSource audioSource;
     public AudioSource climbingAudioSource;
     public bool canMove = true;
@@ -30,10 +30,14 @@ public class BasicPC : MonoBehaviour {
     private int jumpCount = 0;
     private bool isStartedPlaying = false;
     [SerializeField] TextMeshProUGUI textJumpCount;
+    [SerializeField] float verticalMovement;
+    [SerializeField] float horizontalMovement;
+
 
     //[SerializeField] Transform parentTransform;
 
     void Start() {
+
         //parentTransform.position = transform.position;
         audioSource = GetComponent<AudioSource>();
         playerCollision = GetComponent<PlayerCollision>();
@@ -41,6 +45,7 @@ public class BasicPC : MonoBehaviour {
         anim = GetComponent<Animator>();
         //verticalStop = new Vector2(rb.velocity.x, 0);
     }
+
 
     private void Update() {
         //Restart();
@@ -51,19 +56,19 @@ public class BasicPC : MonoBehaviour {
             Attack();
             //Jump();
             Walk();
-            
             ShowJumpCount();
+            
         }
     }
 
     private void ShowJumpCount() {
         textJumpCount.text = $"Jump Count: " + jumpCount;
+        
     }
 
-    private void WallGrab() {
-        float verticalMovement;
+    private void WallGrab(){
         verticalMovement = joystick.Vertical;
-
+        // verticalMovement = Input.GetAxisRaw("Vertical");
         if (playerCollision.onWall && anim.GetBool("isJumping")) {
             wallGrab = true;
         }
@@ -75,11 +80,13 @@ public class BasicPC : MonoBehaviour {
 
         if (playerCollision.onGround) {
             wallGrab = false;
+
         }
 
         if (wallGrab) {
             rb.gravityScale = 0;
             //rb.velocity = verticalStop;
+            
             speedModifier = verticalMovement > 0 ? .35f : 1;
             rb.velocity = new Vector2(rb.velocity.x, verticalMovement * (speedModifier * movePower));
             anim.SetFloat("VerticalAxis", verticalMovement);
@@ -99,6 +106,7 @@ public class BasicPC : MonoBehaviour {
             //        climbingAudioSource.Stop();
             //    }
             //}
+
             isJumping = false;
 
             if (Input.GetKeyDown("w")) {
@@ -135,10 +143,11 @@ public class BasicPC : MonoBehaviour {
                 if (jumpCount == 1) {
                     jumpCount--;
                 }
-            
+
             }
         }
     }
+
 
     public Joystick joystick;
     void Walk() {
@@ -206,14 +215,15 @@ public class BasicPC : MonoBehaviour {
 
         if (playerCollision.onGround) {
             wallJumping = false;
-
         }
+
 
         if (!isJumping) {
             return;
         }
 
     }
+
     public void Jump() {
         if (jumpCount == 0) {
 
@@ -266,6 +276,7 @@ public class BasicPC : MonoBehaviour {
             anim.SetTrigger("attack");
         }
     }
+
 
     //void Hurt() {
     //    if (Input.GetKeyDown(KeyCode.Alpha2)) {
